@@ -106,6 +106,10 @@ class PriceData {
     _commoditiesPrice = newCommoditiesPrice;
   }
 
+  void setCommoditiesPreviousPrice(newCommoditiesPreviousPrice) {
+    _commoditiesPreviousPrice = newCommoditiesPreviousPrice;
+  }
+
   Future<Map<String, double>> fetchCommoditiesPrice() async {
     Map<String, double> priceList = {};
     NetworkHelper networkHelper = NetworkHelper(
