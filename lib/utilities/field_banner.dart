@@ -26,7 +26,7 @@ class FieldBanner extends StatelessWidget {
                 const Expanded(
                   flex: 9,
                   child: Text(
-                    'HARGA HARI INI',
+                    'HARGA',
                     textAlign: TextAlign.center,
                     style: kFieldNameTextStyle,
                   ),

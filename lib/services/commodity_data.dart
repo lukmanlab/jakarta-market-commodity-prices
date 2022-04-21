@@ -64,6 +64,9 @@ class PriceData {
   Map<String, double> _commoditiesPrice = {
   };
 
+  Map<String, double> _commoditiesPreviousPrice = {
+  };
+
   Map<String, double> _commodities24HChange = {
   };
 
@@ -81,6 +84,10 @@ class PriceData {
 
   Map<String, double> getCommoditiesPrice() {
     return _commoditiesPrice;
+  }
+
+  Map<String, double> getCommoditiesPreviousPrice() {
+    return _commoditiesPreviousPrice;
   }
 
   Map<String, double> getCommodities24Change() {
@@ -110,6 +117,19 @@ class PriceData {
       i++;
     }
     return priceList;
+  }
+
+  Future<Map<String, double>> fetchCommoditiesPreviousPrice() async {
+    Map<String, double> previousPriceList = {};
+    NetworkHelper networkHelper = NetworkHelper(
+        '$marketsLatestPriceApiURL/$market');
+    var commodityData = await networkHelper.getData();
+    int i = 0;
+    for (var commodity in _commoditiesName.keys) {
+      previousPriceList[commodity] = commodityData['prices'][i]['price_compare'].toDouble();
+      i++;
+    }
+    return previousPriceList;
   }
 
   Future<Map<String, double>> fetchCommodities24HChange() async {
@@ -169,6 +189,7 @@ class PriceData {
   Future<dynamic> fetchCommoditiesMetaData() async {
     _commoditiesName = await fetchCommoditiesListings();
     _commoditiesPrice = await fetchCommoditiesPrice();
+    _commoditiesPreviousPrice = await fetchCommoditiesPreviousPrice();
     _commodities24HChange = await fetchCommodities24HChange();
     _commoditiesLogoUrl = await fetchCommoditiesImageUrl();
     _commoditiesUnit = await fetchCommoditiesUnit();

@@ -48,7 +48,7 @@ class _PriceScreenState extends State<PriceScreen>
               child: ListView.builder(
                 shrinkWrap: true,
                 itemBuilder: (listViewContext, index) {
-                  String priceInString, commodities24HChangeInString;
+                  String priceInString, previousPriceInString, commodities24HChangeInString;
                   RegExp regex = RegExp(r'([.]*00)(?!.*\d)');
                   double price =
                   commodityData.getCommoditiesPrice().values.toList()[index];
@@ -56,6 +56,14 @@ class _PriceScreenState extends State<PriceScreen>
                     priceInString = price.toStringAsFixed(6).toString().replaceAll(regex, '');
                   } else {
                     priceInString = price.toStringAsFixed(2).toString().replaceAll(regex, '');
+                  }
+
+                  double previousPrice =
+                  commodityData.getCommoditiesPreviousPrice().values.toList()[index];
+                  if (previousPrice < 1) {
+                    previousPriceInString = previousPrice.toStringAsFixed(6).toString().replaceAll(regex, '');
+                  } else {
+                    previousPriceInString = previousPrice.toStringAsFixed(2).toString().replaceAll(regex, '');
                   }
 
                   double commodities24HChange =
@@ -69,6 +77,7 @@ class _PriceScreenState extends State<PriceScreen>
                     commodityName: commodityData.getCommoditiesName().values.toList()[index],
                     commodityCode: commodityData.getCommoditiesName().keys.toList()[index],
                     commodityRate: priceInString,
+                    commodityPreviousRate: previousPriceInString,
                     percent24HChange: commodities24HChangeInString,
                     selectedMarketCode: selectedMarketCode,
                     commodityLogoUrl: imageUrl,

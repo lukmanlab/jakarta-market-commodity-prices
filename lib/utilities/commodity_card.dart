@@ -6,6 +6,7 @@ class CommodityCard extends StatefulWidget {
   final String commodityName;
   final String commodityCode;
   final String commodityRate;
+  final String commodityPreviousRate;
   final String percent24HChange;
   final String selectedMarketCode;
   final String commodityLogoUrl;
@@ -16,6 +17,7 @@ class CommodityCard extends StatefulWidget {
     required this.commodityName,
     required this.commodityCode,
     required this.commodityRate,
+    required this.commodityPreviousRate,
     required this.percent24HChange,
     required this.selectedMarketCode,
     required this.commodityLogoUrl,
@@ -71,11 +73,11 @@ class _CommodityCardState extends State<CommodityCard> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Rp ${widget.commodityRate}',
+                          'Rp ${widget.commodityRate}/${widget.commodityUnit}',
                           style: kRateTextStyle,
                         ),
                         Text(
-                          '/${widget.commodityUnit}',
+                          'Rp ${widget.commodityPreviousRate}/${widget.commodityUnit}',
                           textAlign: TextAlign.center,
                           style: kMarketCodeTextStyle,
                         ),
