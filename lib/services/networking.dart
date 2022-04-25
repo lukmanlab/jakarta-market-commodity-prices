@@ -11,6 +11,7 @@ class NetworkHelper {
     HttpHeaders.userAgentHeader: "JCMP/1.0.0",
     HttpHeaders.acceptEncodingHeader: "gzip",
     HttpHeaders.connectionHeader: "Keep-Alive",
+    HttpHeaders.authorizationHeader : "Basic d2M5WGdiSjhCNjEzVkIzZGdMQ046bG5qMTZOM2w1UW9JeTRHdTQzSEU=",
   };
 
   Future getData() async {

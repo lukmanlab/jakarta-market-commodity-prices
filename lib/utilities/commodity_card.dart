@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CommodityCard extends StatefulWidget {
   final String commodityName;
@@ -44,8 +45,10 @@ class _CommodityCardState extends State<CommodityCard> {
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.network(
-                    widget.commodityLogoUrl,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.commodityLogoUrl,
+                    placeholder: (context, url) => const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                   height: 35,
                   width: 35,
