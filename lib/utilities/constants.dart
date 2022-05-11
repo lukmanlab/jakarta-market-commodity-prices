@@ -38,10 +38,10 @@ const kLogoFirstWordTextStyle = TextStyle(
 
 const kLogoSecondWordTextStyle = TextStyle(
   height: 1,
-  color: Color(0xFF2BFFF1),
+  color: Color(0xFFd0ff00),
   shadows: <Shadow>[
     Shadow(
-      color: Color(0xFF2BFFF1),
+      color: Color(0xFFd0ff00),
       offset: Offset(0, 0),
       blurRadius: 5,
     ),

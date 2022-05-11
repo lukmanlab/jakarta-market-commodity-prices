@@ -13,17 +13,15 @@ class FieldBanner extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 8.0),
             child: Row(
-              children: [
+              children: const [
                 Expanded(
                   flex: 30,
-                  child: Container(
-                    child: const Text(
-                      'NAMA KOMODITAS',
-                      style: kFieldNameTextStyle,
-                    ),
+                  child: Text(
+                    'NAMA KOMODITAS',
+                    style: kFieldNameTextStyle,
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   flex: 9,
                   child: Text(
                     'HARGA',
@@ -31,8 +29,8 @@ class FieldBanner extends StatelessWidget {
                     style: kFieldNameTextStyle,
                   ),
                 ),
-                const Expanded(
-                  flex: 25,
+                Expanded(
+                  flex: 17,
                   child: Text(
                     'PERUBAHAN HARGA',
                     textAlign: TextAlign.center,

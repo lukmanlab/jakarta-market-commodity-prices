@@ -15,8 +15,8 @@ class PriceScreen extends StatefulWidget {
 class _PriceScreenState extends State<PriceScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  String selectedMarketName = 'Ps. Induk Kramat Jati';
-  String selectedMarketCode = '6260d10b04ace909f8601fe1';
+  String selectedMarketName = 'Pasar Induk DKI (Rata-rata)';
+  String selectedMarketCode = '626688e80c192000043fd9b2';
   late Widget allCommoditiesTab;
   late Widget selectedMarketIcon;
   var commoditiesData;
@@ -27,7 +27,7 @@ class _PriceScreenState extends State<PriceScreen>
     List<PopupMenuItem<String>> popupMenuItems = [];
     marketsList.forEach((key, value) {
       PopupMenuItem<String> popupMenuItem = PopupMenuItem(
-        child: Text('$value'),
+        child: Text(value),
         value: key,
       );
       popupMenuItems.add(popupMenuItem);
@@ -89,9 +89,9 @@ class _PriceScreenState extends State<PriceScreen>
             ),
           ],
         );
-        selectedMarketIcon = Text(
-          selectedMarketName,
-          style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+        selectedMarketIcon = const Text(
+          "Pilih Pasar",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
         );
       });
       await Future.delayed(const Duration(seconds: 600));
@@ -101,7 +101,7 @@ class _PriceScreenState extends State<PriceScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this, initialIndex: 0);
+    _tabController = TabController(length: 1, vsync: this, initialIndex: 0);
     allCommoditiesTab = const Center(
       child: SpinKitRing(
         color: Colors.black,
@@ -109,9 +109,9 @@ class _PriceScreenState extends State<PriceScreen>
         lineWidth: 4,
       ),
     );
-    selectedMarketIcon = Text(
-      selectedMarketName,
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+    selectedMarketIcon = const Text(
+      "Pilih Pasar",
+      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
     );
     updateUI();
   }
@@ -122,7 +122,7 @@ class _PriceScreenState extends State<PriceScreen>
       appBar: AppBar(
         toolbarHeight: 60,
         elevation: 5,
-        shadowColor: const Color(0xFF000000),
+        shadowColor: const Color(0xFF999999),
         backgroundColor: Colors.black,
         title: Row(
           children: const [
@@ -141,6 +141,7 @@ class _PriceScreenState extends State<PriceScreen>
             itemBuilder: (BuildContext context) {
               return getPopupMenuItemsList();
             },
+            padding: const EdgeInsets.only(top: 5, bottom: 5),
             onSelected: (key) {
               selectedMarketName = marketsList[key].toString();
               selectedMarketCode = key;
@@ -161,19 +162,13 @@ class _PriceScreenState extends State<PriceScreen>
         ],
         bottom: TabBar(
           overlayColor: MaterialStateProperty.all(Colors.transparent),
-          indicatorColor: const Color(0xFF2BFFF1),
+          indicatorColor: const Color(0xFFd0ff00),
           controller: _tabController,
-          tabs: const [
+          tabs: [
             Tab(
               child: Text(
-                'Daftar Harga Komoditas',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            Tab(
-              child: Text(
-                'My Watchlist',
-                style: TextStyle(color: Colors.white),
+                selectedMarketName,
+                style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
               ),
             ),
           ],
@@ -182,19 +177,10 @@ class _PriceScreenState extends State<PriceScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          allCommoditiesTab,
-          Center(
-            child: Container(
-              margin: const EdgeInsets.all(50),
-              child: Text(
-                'You have not added any commodity to your watchlist.',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey.shade700),
-              ),
-            ),
-          ),
+          allCommoditiesTab
         ],
       ),
     );
   }
 }
+

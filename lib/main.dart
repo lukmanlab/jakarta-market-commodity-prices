@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: const Color(0xFF2BFFF1), // Your accent color
+          secondary: const Color(0xFFd0ff00), // Your accent color
         ),
-        // androidOverscrollIndicator: AndroidOverscrollIndicator.glow,
+        androidOverscrollIndicator: AndroidOverscrollIndicator.glow,
       ),
-      home: PriceScreen(),
+      home: const PriceScreen(),
     );
   }
 }

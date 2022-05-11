@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -112,21 +111,6 @@ class _CommodityCardState extends State<CommodityCard> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 4,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        widget.jcmpIconColor = Colors.yellow.shade700;
-                      });
-                    },
-                    child: Icon(
-                      CupertinoIcons.eye,
-                      color: widget.jcmpIconColor,
-                      size: 25,
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
@@ -145,3 +129,4 @@ class _CommodityCardState extends State<CommodityCard> {
     );
   }
 }
+
