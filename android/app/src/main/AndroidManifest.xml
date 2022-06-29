@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jakarta_market_commodity_prices">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="jakarta_market_commodity_prices"
         android:name="${applicationName}"
